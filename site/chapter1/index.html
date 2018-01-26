@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TF-IDF - NLP-2</title>
+  
+
+  <link rel="shortcut icon" href="../icon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "TF-IDF";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> NLP-2</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">主页</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">TF-IDF</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#tf-idf">TF-IDF是什么？</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#tf">TF</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#idf">IDF</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#tf-idf_1">TF-IDF</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#tf-idf_2">TF-IDF的缺点</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#rpython">R与Python工具的实现</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../chapter2/">Embadding</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../chapter3/">word2vec</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../chapter4/">seq2seq</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../chapter5/">text2vec</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../about/">关于</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">NLP-2</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>TF-IDF</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/DataXujing/nlp2/" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="tf-idf">TF-IDF是什么？</h2>
+<p>TF-IDF是一种统计方法，用以评估一字词对于一个文件集或一个语料库中的其中一份文件的重要程度,
+TF-IDF加权的各种形式常被搜寻引擎应用，作为文件与用户查询之间相关程度的度量或评级。
+除了TF-IDF以外，因特网上的搜寻引擎还会使用基于连结分析的评级方法，以确定文件在搜寻结果中出现的顺序。</p>
+<ul>
+<li>
+<p>一个词语在一篇文章中出现次数越多, 同时在所有文档中出现次数越少, 越能够代表该文章.</p>
+</li>
+<li>
+<p>把文件(文本样本)中的词映射到一个相对合理的数值</p>
+</li>
+<li>
+<p>文本转化为数据的方法</p>
+</li>
+</ul>
+<hr />
+<h2 id="tf">TF</h2>
+<p><strong>词频 (term frequency, TF)</strong> 指的是某一个给定的词语在该文件中出现的次数。这个数字通常会被归一化(一般是词频除以文章总词数), 以防止它偏向长的文件。（同一个词语在长文件里可能会比短文件有更高的词频，而不管该词语重要与否。）</p>
+<p><img style='align:center;' src="/img/2.png" /></p>
+<hr />
+<h2 id="idf">IDF</h2>
+<p><strong>逆向文档频率 (inverse document frequency, IDF)</strong> IDF的主要思想是：如果包含词条t的文档越少, IDF越大，则说明词条具有很好的类别区分能力。某一特定词语的IDF，可以由总文件数目除以包含该词语之文件的数目，再将得到的商取对数得到。</p>
+<div align=center>
+<img src="/img/3.png" />
+</div>
+
+<hr />
+<h2 id="tf-idf_1">TF-IDF</h2>
+<p>某一特定文件内的高词语频率，以及该词语在整个文件集合中的低文件频率，可以产生出高权重的TF-IDF。因此，TF-IDF倾向于过滤掉常见的词语，保留重要的词语。 </p>
+<div align=center>
+<img src="/img/4.png" />
+</div>
+
+<hr />
+<h2 id="tf-idf_2">TF-IDF的缺点</h2>
+<p>单纯以"词频"衡量一个词的重要性，不够全面，有时重要的词可能出现次数并不多。而且，这种算法无法体现词的位置信息，出现位置靠前的词与出现位置靠后的词，都被视为重要性相同，这是不正确的。也没有考虑词性。</p>
+<h2 id="rpython">R与Python工具的实现</h2>
+<ul>
+<li>R</li>
+</ul>
+<pre><code class="r">#法1
+set.seed(42)
+d &lt;- data.frame(w=sample(LETTERS, 50, replace=TRUE))
+d &lt;- model.matrix(~0+w, data=d)
+
+tf &lt;- d
+idf &lt;- log(nrow(d)/colSums(d))
+tfidf &lt;- d
+
+for(word in names(idf)){
+  tfidf[,word] &lt;- tf[,word] * idf[word]
+}
+
+#法2 使用tm包或tmcn包
+#read 1000 txt articles from directory data/txt
+corpus  &lt;- Corpus(DirSource(&quot;data/txt&quot;), readerControl = list(blank.lines.skip=TRUE));
+#some preprocessing
+corpus &lt;- tm_map(corpus, removeWords, stopwords(&quot;english&quot;))
+corpus &lt;- tm_map(corpus, stripWhitespace)
+corpus &lt;- tm_map(corpus, stemDocument, language=&quot;english&quot;)
+#creating term matrix with TF-IDF weighting
+terms &lt;-DocumentTermMatrix(corpus,control = list(weighting = function(x) weightTfIdf(x, normalize = FALSE)))
+
+#or compute cosine distance among documents
+dissimilarity(tdm, method = &quot;cosine&quot;)
+
+</code></pre>
+
+<ul>
+<li>Python</li>
+</ul>
+<pre><code class="python">#法1：CountVectorizer+TfidfTransformer
+
+from sklearn.feature_extraction.text import TfidfTransformer  
+from sklearn.feature_extraction.text import CountVectorizer  
+
+corpus = [&quot;I come to China to travel&quot;, \
+    &quot;This is a car polupar in China&quot;, \         
+    &quot;I love tea and Apple &quot;, \  
+    &quot;The work is to write some papers in science&quot;] 
+
+vectorizer = CountVectorizer()
+
+transformer = TfidfTransformer()
+tfidf = transformer.fit_transform(vectorizer.fit_transform(corpus))  
+print tfidf
+
+#法2：TfidfVectorizer
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+tfidf2 = TfidfVectorizer()
+re = tfidf2.fit_transform(corpus)
+print re
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../chapter2/" class="btn btn-neutral float-right" title="Embadding"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="主页"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../chapter2/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
