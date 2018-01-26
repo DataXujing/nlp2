@@ -1,0 +1,13 @@
+site_name: NLP-2
+site_author: 徐静
+site_favicon: icon.ico
+repo_url: https://github.com/DataXujing/nlp2/
+pages:
+  - 主页: index.md
+  - TF-IDF: chapter1.md
+  - Embadding: chapter2.md
+  - word2vec: chapter3.md
+  - seq2seq: chapter4.md
+  - text2vec: chapter5.md
+  - 关于: about.md
+theme: readthedocs
