@@ -1,7 +1,7 @@
 ## 1.八卦时间
 
 <div align=center>
-<img src="/img/niu.png" />
+<img src="../img/niu.png" />
 </div>
 
 除了bengio之外, 不得不提的一个名字是：Jürgen Schmidhuber
@@ -38,7 +38,7 @@ NNLM模型只能处理定长的序列。在03年的论文里，Bengio等人将�
 Mikolov是这么想的，也是这么做的。他在2013年一口气推出了两篇paper，并开源了一款计算词向量的工具——至此，word2vec横空出世，主角闪亮登场。
 
 <div align=center>
-<img src="/img/23.png" />
+<img src="../img/23.png" />
 </div>
 
 有了前文的基础，理解word2vec算法就变得很简单了
@@ -56,11 +56,11 @@ Mikolov是这么想的，也是这么做的。他在2013年一口气推出了两
 得到的模型称之为CBoW模型（Continuous Bag-of-Words Model），也是word2vec算法的第一个模型：
 
 <div align=center>
-<img src="/img/19.png" />
+<img src="../img/19.png" />
 </div>
 
 <div align=center>
-<img src="/img/24.png" />
+<img src="../img/24.png" />
 </div>
 
 从数学上看，CBOW模型等价于一个词袋模型的向量乘以一个embedding矩阵，从而得到一个连续的embedding向量。这也是CBOW模型名称的由来。
@@ -70,19 +70,19 @@ CBOW模型依然是从context对target word的预测中学习到词向量的表�
 ### B.Skip-Gram
 
 <div align=center>
-<img src="/img/20.png" />
+<img src="../img/20.png" />
 </div>
 
 <div align=center>
-<img src="/img/21.png" />
+<img src="../img/21.png" />
 </div>
 
 <div align=center>
-<img src="/img/22.png" />
+<img src="../img/22.png" />
 </div>
 
 <div align=center>
-<img src="/img/25.png" />
+<img src="../img/25.png" />
 </div>
 
 ------

@@ -8,5 +8,5 @@
 
 
 <div align=center>
-<img src="/img/18.png" />
+<img src="../img/18.png" />
 </div>

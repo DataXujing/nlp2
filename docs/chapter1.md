@@ -30,7 +30,7 @@ TF-IDF加权的各种形式常被搜寻引擎应用，作为文件与用户查�
 **逆向文档频率 (inverse document frequency, IDF)** IDF的主要思想是：如果包含词条t的文档越少, IDF越大，则说明词条具有很好的类别区分能力。某一特定词语的IDF，可以由总文件数目除以包含该词语之文件的数目，再将得到的商取对数得到。
 
 <div align=center>
-<img src="/img/3.png" />
+<img src="../img/3.png" />
 </div>
 
 ------
@@ -39,7 +39,7 @@ TF-IDF加权的各种形式常被搜寻引擎应用，作为文件与用户查�
 某一特定文件内的高词语频率，以及该词语在整个文件集合中的低文件频率，可以产生出高权重的TF-IDF。因此，TF-IDF倾向于过滤掉常见的词语，保留重要的词语。 
 
 <div align=center>
-<img src="/img/4.png" />
+<img src="../img/4.png" />
 </div>
 
 ------

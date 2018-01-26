@@ -67,19 +67,19 @@
 n元语言模型：对语料中一段长度为n 的序列wn−i+1,...,wi−1，即长度小于n的上文，n元语言模型需要最大化如下似然：
 
 <div align=center>
-<img src="/img/5.png" />
+<img src="../img/5.png" />
 </div>
 
 wi为语言模型要预测的目标词，序列wn−i+1,...,wi−1为模型的输入，即上下文，输出则为目标词wi的分布。用频率估计估计n元条件概率： 
 
 <div align=center>
-<img src="/img/5.1.png" />
+<img src="../img/5.1.png" />
 </div>
 
 通常，n越大，越能保留词序信息，但是长序列出现的次数会非常少，导致数据稀疏的问题。一般三元模型较为常用。
 
 <div align=center>
-<img src="/img/5.2.png" />
+<img src="../img/5.2.png" />
 </div>
 
 具体的语言模型详情属于街货，详细请自行搜索。
@@ -122,13 +122,13 @@ wi为语言模型要预测的目标词，序列wn−i+1,...,wi−1为模型的�
 + ‘词-文档‘矩阵
 
 <div align=center>
-<img src="/img/6.png" />
+<img src="../img/6.png" />
 </div>
 
 + ’词-词‘共现矩阵
 
 <div align=center>
-<img src="/img/7.png" />
+<img src="../img/7.png" />
 </div>
 
 + 矩阵分解
@@ -136,20 +136,20 @@ wi为语言模型要预测的目标词，序列wn−i+1,...,wi−1为模型的�
    - LSA
 
 <div align=center>
-<img src="/img/9.png" />
+<img src="../img/9.png" />
 </div>
 
    - GloVe
 
 <div align=center>
-<img src="/img/10.png" />
+<img src="../img/10.png" />
 </div>
 
 
 + 思路
 
 <div align=center>
-<img src="/img/8.png" />
+<img src="../img/8.png" />
 </div>
 
 
@@ -165,7 +165,7 @@ wi为语言模型要预测的目标词，序列wn−i+1,...,wi−1为模型的�
 前面提过，one-hot表示法具有维度过大的缺点，那么现在将vector做一些改进：1、将vector每一个元素由整形改为浮点型，变为整个实数范围的表示；2、将原来稀疏的巨大维度压缩嵌入到一个更小维度的空间。如图示：
 
 <div align=center>
-<img src="/img/11.png" />
+<img src="../img/11.png" />
 </div>
 **词向量又名词嵌入的缘由**
 
@@ -190,15 +190,15 @@ Neural Network Language Model [Y.Bengio et al. 2003]
 Bengio 神经网络语言模型（Neural Network Language Model ，NNLM）是对 n 元语言模型进行建模，估算 P(wi|wn−i+1,...,wi−1) 的概率值。与n-gram等模型区别在于：NNLM不用记数的方法来估算 n 元条件概率，而是使用一个三层的神经网络模型（前馈神经网络），根据上下文的表示以及上下文与目标词之间的关系进行建模求解，如下图： 
 
 <div align=center>
-<img src="/img/12.png" />
+<img src="../img/12.png" />
 </div>
 
 <div align=center>
-<img src="/img/13.png" />
+<img src="../img/13.png" />
 </div>
 
 <div align=center>
-<img src="/img/14.png" />
+<img src="../img/14.png" />
 </div>
 
 + 说了这么多，副产品哪去了？
@@ -211,11 +211,11 @@ Bengio 神经网络语言模型（Neural Network Language Model ，NNLM）是对
 Log-bilinear Language Model[A. Mnih & G. Hinton, 2007]
 
 <div align=center>
-<img src="/img/15.png" />
+<img src="../img/15.png" />
 </div>
 
 <div align=center>
-<img src="/img/16.png" />
+<img src="../img/16.png" />
 </div>
 
 ------
