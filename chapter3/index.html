@@ -160,7 +160,7 @@
               
                 <h2 id="1">1.八卦时间</h2>
 <div align=center>
-<img src="/img/niu.png" />
+<img src="../img/niu.png" />
 </div>
 
 <p>除了bengio之外, 不得不提的一个名字是：Jürgen Schmidhuber</p>
@@ -189,7 +189,7 @@
 如果我们只是想得到word的连续特征向量，是不是可以对第二步里的神经网络模型进行简化呢？</p>
 <p>Mikolov是这么想的，也是这么做的。他在2013年一口气推出了两篇paper，并开源了一款计算词向量的工具——至此，word2vec横空出世，主角闪亮登场。</p>
 <div align=center>
-<img src="/img/23.png" />
+<img src="../img/23.png" />
 </div>
 
 <p>有了前文的基础，理解word2vec算法就变得很简单了</p>
@@ -208,30 +208,30 @@
 </ul>
 <p>得到的模型称之为CBoW模型（Continuous Bag-of-Words Model），也是word2vec算法的第一个模型：</p>
 <div align=center>
-<img src="/img/19.png" />
+<img src="../img/19.png" />
 </div>
 
 <div align=center>
-<img src="/img/24.png" />
+<img src="../img/24.png" />
 </div>
 
 <p>从数学上看，CBOW模型等价于一个词袋模型的向量乘以一个embedding矩阵，从而得到一个连续的embedding向量。这也是CBOW模型名称的由来。</p>
 <p>CBOW模型依然是从context对target word的预测中学习到词向量的表达。反过来，我们能否从target word对context的预测中学习到word vector呢？答案显然是可以的。</p>
 <h3 id="bskip-gram">B.Skip-Gram</h3>
 <div align=center>
-<img src="/img/20.png" />
+<img src="../img/20.png" />
 </div>
 
 <div align=center>
-<img src="/img/21.png" />
+<img src="../img/21.png" />
 </div>
 
 <div align=center>
-<img src="/img/22.png" />
+<img src="../img/22.png" />
 </div>
 
 <div align=center>
-<img src="/img/25.png" />
+<img src="../img/25.png" />
 </div>
 
 <hr />
